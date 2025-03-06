@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="32dp" >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_article"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView_source_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/imageView_article"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="12dp"
+        android:maxLines="1"
+        android:text="Europe"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView_newsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/textView_source_name"
+        app:layout_constraintTop_toBottomOf="@id/textView_source_name"
+        app:layout_constraintEnd_toEndOf="@id/textView_source_name"
+        android:maxLines="2"
+        android:layout_marginTop="4dp"
+        android:text="Russian warship: Moskva sinks in Black Sea"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="16sp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_newsAuthor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="@id/textView_source_name"
+        app:layout_constraintTop_toBottomOf="@id/textView_newsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cnn"/>
+
+    <TextView
+        android:id="@+id/textView_newsAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/imageView_newsAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_newsAuthor"
+        app:layout_constraintStart_toEndOf="@id/imageView_newsAuthor"
+        app:layout_constraintEnd_toStartOf="@id/layout_time"
+        android:layout_marginStart="4dp"
+        android:text="BBC News"
+        android:fontFamily="@font/poppins_bold"
+        android:textFontWeight="600"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/layout_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_newsAuthor"
+        app:layout_constraintEnd_toStartOf="@+id/button_more"
+        app:layout_constraintStart_toEndOf="@id/textView_newsAuthor"
+        app:layout_constraintTop_toTopOf="@id/imageView_newsAuthor">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView_time"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/time" />
+
+        <TextView
+            android:id="@+id/textView_publishedAt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:ellipsize="end"
+            android:text="4h ago"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        style="?attr/materialIconButtonStyle"
+        android:id="@+id/button_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/imageView_newsAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_newsAuthor"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="More"
+        app:icon="@drawable/baseline_more_horiz_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
