@@ -23,45 +23,42 @@
         android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:iconSize="28dp"
+        app:iconSize="22dp"
+        app:iconTint="?colorOnBackground"
         app:icon="@drawable/baseline_arrow_back_24" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="?colorOnSecondaryContainer"
-            android:textFontWeight="700"
-            android:textSize="48sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup to get Started"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="?colorOnSecondaryContainer"
-            android:textSize="20sp"
-            android:layout_marginBottom="32dp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="24dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?colorOnSecondaryContainer"
+                android:textFontWeight="700"
+                android:textSize="48sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signup to get Started"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="?colorOnSecondaryContainer"
+                android:textSize="20sp"
+                android:layout_marginBottom="32dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextName"
@@ -74,9 +71,7 @@
                 android:id="@+id/textInputLayoutSurname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="8dp">
+                android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextSurname"
@@ -84,20 +79,12 @@
                     android:layout_height="wrap_content"
                     android:hint="Surname" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="8dp">
+                android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextBio"
@@ -110,9 +97,7 @@
                 android:id="@+id/textInputLayoutWebsite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="8dp">
+                android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextWebsite"
@@ -120,123 +105,121 @@
                     android:layout_height="wrap_content"
                     android:hint="Website" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
 
-        <!-- Email -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@id/editTextEmail"
+            <!-- Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="Email" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp">
 
-        <!-- Password -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:passwordToggleEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@id/editTextPassword"
+            <!-- Password -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Password" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                app:passwordToggleEnabled="true">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#1877F2"
-            app:cornerRadius="6dp"
-            android:textSize="16sp"
-            android:textFontWeight="600"
-            android:text="Signup" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="or continue with"
-            android:layout_marginVertical="16dp"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Password" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="12dp"
+                android:layout_marginTop="16dp"
+                android:paddingVertical="12dp"
+                android:backgroundTint="?colorPrimary"
                 app:cornerRadius="6dp"
-                app:icon="@drawable/facebook"
-                app:iconSize="24dp"
-                app:iconTint="@null"
-                android:backgroundTint="#EEF1F4"
-                android:textColor="#667080"
-                android:textSize="16sp"
-                android:textFontWeight="600"
-                android:maxLines="1"
-                android:text="Facebook"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="12dp"
-                app:cornerRadius="6dp"
-                app:icon="@drawable/google"
-                app:iconSize="24dp"
-                app:iconTint="@null"
-                android:backgroundTint="#EEF1F4"
-                android:textColor="#667080"
-                android:textSize="16sp"
-                android:textFontWeight="600"
-                android:maxLines="1"
-                android:text="Google" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="16dp" >
+                style="@style/TextAppearance.Poppins.TitleSmall"
+                android:textColor="?android:colorBackground"
+                android:text="Signup" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Already have an account ? "
-                android:layout_marginVertical="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="14sp" />
+                android:text="or continue with"
+                android:layout_marginVertical="16dp"/>
 
-            <TextView
-                android:id="@+id/signInLink"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Login"
-                android:layout_marginVertical="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="#5890FF"
-                android:textSize="14sp" />
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/facebook"
+                    app:iconSize="20dp"
+                    app:iconTint="@null"
+                    android:backgroundTint="@color/light_gray"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_gray"
+                    style="@style/TextAppearance.Poppins.TitleSmall"
+                    android:text="Facebook"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/google"
+                    app:iconSize="20dp"
+                    app:iconTint="@null"
+                    android:backgroundTint="@color/light_gray"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_gray"
+                    style="@style/TextAppearance.Poppins.TitleSmall"
+                    android:text="Google" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="16dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Already have an account ? "
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/signInLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Login"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="#5890FF"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

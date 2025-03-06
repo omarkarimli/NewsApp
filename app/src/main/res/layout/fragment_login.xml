@@ -38,7 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome back you’ve\nbeen missed"
-        android:fontFamily="@font/poppins_regular"
         android:textColor="?colorOnSecondaryContainer"
         android:textSize="20sp"
         android:layout_marginBottom="32dp" />
@@ -55,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            style="@style/TextAppearance.Poppins.BodyLarge"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            style="@style/TextAppearance.Poppins.BodyLarge"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,30 +90,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot the password?"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="#5890FF"
-            android:textSize="14sp" />
+            android:textColor="?colorPrimary" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="13dp"
-        android:backgroundTint="#1877F2"
+        android:paddingVertical="12dp"
+        android:backgroundTint="?colorPrimary"
         app:cornerRadius="6dp"
-        android:textSize="16sp"
-        android:textFontWeight="600"
+        style="@style/TextAppearance.Poppins.TitleSmall"
+        android:textColor="?android:colorBackground"
         android:text="Login" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="or continue with"
         android:layout_marginVertical="16dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="14sp" />
+        android:layout_gravity="center_horizontal"
+        android:text="or continue with" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -129,13 +126,12 @@
             android:layout_marginEnd="16dp"
             app:cornerRadius="6dp"
             app:icon="@drawable/facebook"
-            app:iconSize="24dp"
+            app:iconSize="20dp"
             app:iconTint="@null"
-            android:backgroundTint="#EEF1F4"
-            android:textColor="#667080"
-            android:textSize="16sp"
-            android:textFontWeight="600"
+            android:backgroundTint="@color/light_gray"
             android:maxLines="1"
+            android:textColor="@color/dark_gray"
+            style="@style/TextAppearance.Poppins.TitleSmall"
             android:text="Facebook"/>
 
         <com.google.android.material.button.MaterialButton
@@ -149,13 +145,12 @@
             android:layout_marginStart="16dp"
             app:cornerRadius="6dp"
             app:icon="@drawable/google"
-            app:iconSize="24dp"
+            app:iconSize="20dp"
             app:iconTint="@null"
-            android:backgroundTint="#EEF1F4"
-            android:textColor="#667080"
-            android:textSize="16sp"
-            android:textFontWeight="600"
+            android:backgroundTint="@color/light_gray"
             android:maxLines="1"
+            android:textColor="@color/dark_gray"
+            style="@style/TextAppearance.Poppins.TitleSmall"
             android:text="Google" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

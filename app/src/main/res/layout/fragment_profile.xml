@@ -6,34 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.ui.editProfile.ProfileFragment">
-
-    <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    tools:context=".presentation.ui.profile.ProfileFragment">
 
     <!-- Top App Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
             android:text="Profile"
-            android:textSize="18sp"
+            style="@style/TextAppearance.Poppins.TitleMedium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +36,8 @@
             android:layout_height="wrap_content"
             android:contentDescription="Settings"
             app:icon="@drawable/settings"
-            app:iconSize="28dp"
+            app:iconTint="?colorOnBackground"
+            app:iconSize="22dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,20 +55,19 @@
         android:src="@drawable/default_profile"/>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/layout_social_info"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageView_profile"
         app:layout_constraintTop_toTopOf="@id/imageView_profile"
         app:layout_constraintBottom_toBottomOf="@id/imageView_profile"
         android:layout_marginStart="24dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -85,17 +75,37 @@
                 android:id="@+id/follower_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
                 android:maxLines="1"
-                android:text="2156"
-                android:textSize="18sp" />
+                style="@style/TextAppearance.Poppins.TitleMedium"
+                android:text="2156" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
                 android:text="Followers"
-                android:textSize="16sp" />
+                style="@style/TextAppearance.Poppins.BodyLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/follow_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                style="@style/TextAppearance.Poppins.TitleMedium"
+                android:text="567" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Followers"
+                style="@style/TextAppearance.Poppins.BodyLarge" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,20 +115,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/follow_count"
+                android:id="@+id/news_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
                 android:maxLines="1"
-                android:text="567"
-                android:textSize="18sp" />
+                style="@style/TextAppearance.Poppins.TitleMedium"
+                android:text="23" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Followers"
-                android:textSize="16sp" />
+                android:text="News"
+                style="@style/TextAppearance.Poppins.BodyLarge" />
         </LinearLayout>
     </LinearLayout>
 
@@ -128,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/layout_social_info"
         app:layout_constraintStart_toStartOf="@id/imageView_profile"
         app:layout_constraintTop_toBottomOf="@id/imageView_profile">
 
@@ -136,27 +144,25 @@
             android:id="@+id/textView_name_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
             android:maxLines="1"
-            android:text="Name Surname"
-            android:textSize="18sp" />
+            style="@style/TextAppearance.Poppins.TitleMedium"
+            android:text="Name Surname" />
 
         <TextView
             android:id="@+id/textView_bio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            android:textSize="16sp" />
+            style="@style/TextAppearance.Poppins.BodyMedium"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView_profile"
+        app:layout_constraintEnd_toEndOf="@id/layout_social_info"
         app:layout_constraintTop_toBottomOf="@id/layout_info"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -165,11 +171,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:paddingVertical="13dp"
-            android:backgroundTint="#1877F2"
+            android:paddingVertical="12dp"
+            android:backgroundTint="?colorPrimary"
             app:cornerRadius="6dp"
-            android:textSize="16sp"
-            android:textFontWeight="600"
+            style="@style/TextAppearance.Poppins.TitleSmall"
+            android:textColor="?android:colorBackground"
             android:text="Edit profile" />
 
         <com.google.android.material.button.MaterialButton
@@ -178,12 +184,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:paddingVertical="13dp"
-            android:backgroundTint="#1877F2"
+            android:paddingVertical="12dp"
+            android:backgroundTint="?colorPrimary"
             app:cornerRadius="6dp"
-            android:textSize="16sp"
-            android:textFontWeight="600"
+            style="@style/TextAppearance.Poppins.TitleSmall"
+            android:textColor="?android:colorBackground"
             android:text="Website" />
     </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
