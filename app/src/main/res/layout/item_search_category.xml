@@ -31,20 +31,16 @@
             android:id="@+id/textView_category_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="General"
-            android:fontFamily="@font/poppins_semibold"
-            android:textSize="16sp"
-            android:maxLines="1" />
+            android:maxLines="1"
+            style="@style/TextAppearance.Poppins.TitleMedium"
+            android:text="General" />
 
         <TextView
             android:id="@+id/textView_category_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Sports news and live sports coverage including scores.."
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
-            android:maxLines="1" />
+            android:maxLines="2"
+            android:text="Sports news and live sports coverage including scores" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

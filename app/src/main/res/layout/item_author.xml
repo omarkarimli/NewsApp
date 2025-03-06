@@ -31,20 +31,16 @@
             android:id="@+id/textView_source_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BBC News"
-            android:fontFamily="@font/poppins_semibold"
-            android:textSize="16sp"
-            android:maxLines="1" />
+            android:maxLines="1"
+            style="@style/TextAppearance.Poppins.TitleMedium"
+            android:text="BBC News" />
 
         <TextView
             android:id="@+id/textView_source_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Russian warship: Moskva sinks in Black Sea"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="14sp"
-            android:maxLines="1" />
+            android:maxLines="2"
+            android:text="Russian warship: Moskva sinks in Black Sea" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

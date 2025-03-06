@@ -9,8 +9,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView_article"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/imageView_article"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageView_article"
         android:layout_marginHorizontal="12dp"
         android:maxLines="1"
-        android:text="Europe"
-        android:textSize="14sp" />
+        style="@style/TextAppearance.Poppins.BodyMedium"
+        android:text="Europe" />
 
     <TextView
         android:id="@+id/textView_newsTitle"
@@ -37,11 +37,10 @@
         app:layout_constraintStart_toStartOf="@id/textView_source_name"
         app:layout_constraintTop_toBottomOf="@id/textView_source_name"
         app:layout_constraintEnd_toEndOf="@id/textView_source_name"
-        android:maxLines="2"
         android:layout_marginTop="4dp"
-        android:text="Russian warship: Moskva sinks in Black Sea"
-        android:fontFamily="@font/poppins_semibold"
-        android:textSize="16sp" />
+        android:maxLines="1"
+        style="@style/TextAppearance.Poppins.TitleMedium"
+        android:text="Russian warship: Moskva sinks in Black Sea" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView_newsAuthor"
@@ -63,10 +62,8 @@
         app:layout_constraintStart_toEndOf="@id/imageView_newsAuthor"
         app:layout_constraintEnd_toStartOf="@id/layout_time"
         android:layout_marginStart="4dp"
-        android:text="BBC News"
-        android:fontFamily="@font/poppins_bold"
-        android:textFontWeight="600"
-        android:textSize="12sp" />
+        style="@style/TextAppearance.Poppins.TitleSmall"
+        android:text="BBC News" />
 
     <LinearLayout
         android:id="@+id/layout_time"
@@ -91,10 +88,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
-            android:fontFamily="@font/poppins_regular"
             android:ellipsize="end"
-            android:text="4h ago"
-            android:textSize="12sp" />
+            style="@style/TextAppearance.Poppins.BodySmall"
+            android:text="4h ago" />
     </LinearLayout>
 
     <Button
@@ -106,6 +102,7 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView_newsAuthor"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="More"
-        app:icon="@drawable/baseline_more_horiz_24" />
+        app:iconTint="?colorOnBackground"
+        app:icon="@drawable/more" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

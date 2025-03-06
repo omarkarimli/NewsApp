@@ -11,9 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="#4E4B66"
-        android:textSize="14sp"
+        style="@style/TextAppearance.Poppins.BodyMedium"
+        android:textColor="?colorOnBackground"
         android:text="All" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -21,7 +20,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:dividerColor="#1877F2"
+        app:dividerColor="?colorPrimary"
         app:dividerThickness="3dp"/>
 
 </LinearLayout>

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Lorem Ipsum is simply\ndummy"
             android:fontFamily="@font/poppins_semibold"
-            android:textColor="?colorOnSecondaryContainer"
+            android:textColor="?colorOnBackground"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
         <TextView
@@ -42,8 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry."
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="?colorOnSecondaryContainer"
+            android:textColor="?colorOnBackground"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
     </LinearLayout>
 
