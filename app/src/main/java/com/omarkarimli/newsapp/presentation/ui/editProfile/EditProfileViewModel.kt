@@ -1,36 +1,36 @@
-package com.omarkarimli.newsapp.presentation.ui.profile
+package com.omarkarimli.newsapp.presentation.ui.editProfile
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.omarkarimli.newsapp.domain.models.UserData
-import com.omarkarimli.newsapp.domain.repository.NewsRepository
+import com.omarkarimli.newsapp.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
-    private val repo: NewsRepository
+class EditProfileViewModel @Inject constructor(
+    private val repo: AuthRepository
 ) : ViewModel() {
 
-    val userData = MutableLiveData<UserData?>()
-
+    val navigating = MutableLiveData(false)
     val loading = MutableLiveData(false)
     val error = MutableLiveData<String>()
 
-    fun fetchUserData() {
+    fun updateUserData(userData: UserData) {
+        navigating.value = false
+        loading.value = true
+
         viewModelScope.launch {
             loading.value = true
             try {
-                val response = repo.fetchUserData()
-                if (response != null) {
-                    userData.postValue(response)
-                }
+                repo.updateUserInFirestore(userData)
+                navigating.value = true
             } catch (e: Exception) {
-                Log.e("ProfileViewModel", "Error: ${e.message}")
-                error.postValue("Failed to load user data")
+                Log.e("EditProfileViewModel", "Error: ${e.message}")
+                error.postValue("Failed to update user data")
             } finally {
                 loading.value = false
             }

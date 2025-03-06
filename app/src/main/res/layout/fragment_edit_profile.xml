@@ -58,6 +58,16 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_profile"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

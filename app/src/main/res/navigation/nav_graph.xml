@@ -68,7 +68,14 @@
         android:id="@+id/profileFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.register.RegisterFragment"
@@ -84,4 +91,22 @@
         android:name="com.omarkarimli.newsapp.presentation.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.omarkarimli.newsapp.presentation.ui.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument
+            android:name="userData"
+            app:argType="com.omarkarimli.newsapp.domain.models.UserData" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.omarkarimli.newsapp.presentation.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

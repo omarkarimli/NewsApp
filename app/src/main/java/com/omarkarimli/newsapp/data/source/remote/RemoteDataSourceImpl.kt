@@ -3,8 +3,8 @@ package com.omarkarimli.newsapp.data.source.remote
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.omarkarimli.newsapp.NewsApiService
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.models.SourceX
@@ -82,12 +82,15 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun fetchUserData(): DocumentSnapshot =
-        provideFirestore
+    override suspend fun fetchUserData(): UserData? {
+        val snapshot = provideFirestore
             .collection(Constants.USERS)
-            .document(provideAuth.currentUser?.uid ?: "error")
+            .document(provideAuth.currentUser?.uid ?: return null)
             .get()
             .await()
+
+        return snapshot.toObject(UserData::class.java)
+    }
 
     override suspend fun loginUserAccount(isChecked: Boolean, email: String, password: String): AuthResult =
         provideAuth
@@ -101,10 +104,31 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun addUserToFirestore(userData: UserData) {
         val uid = provideAuth.currentUser?.uid ?: "error"
+        val userMap = mapOf(
+            "name" to userData.name,
+            "surname" to userData.surname,
+            "bio" to userData.bio,
+            "website" to userData.website
+        )
         provideFirestore
             .collection(Constants.USERS)
             .document(uid)
-            .set(userData)
+            .set(userMap)
+            .await()
+    }
+
+    override suspend fun updateUserInFirestore(userData: UserData) {
+        val uid = provideAuth.currentUser?.uid ?: "error"
+        val userMap = mapOf(
+            "name" to userData.name,
+            "surname" to userData.surname,
+            "bio" to userData.bio,
+            "website" to userData.website
+        )
+        provideFirestore
+            .collection(Constants.USERS)
+            .document(uid)
+            .set(userMap, SetOptions.merge())
             .await()
     }
 }

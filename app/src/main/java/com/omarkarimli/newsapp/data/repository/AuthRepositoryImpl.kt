@@ -15,4 +15,6 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun registerNewUser(email: String, password: String) = remoteDataSource.registerNewUser(email, password)
 
     override suspend fun addUserToFirestore(userData: UserData) = remoteDataSource.addUserToFirestore(userData)
+
+    override suspend fun updateUserInFirestore(userData: UserData) = remoteDataSource.updateUserInFirestore(userData)
 }

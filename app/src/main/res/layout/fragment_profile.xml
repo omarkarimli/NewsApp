@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.ui.profile.ProfileFragment">
+    tools:context=".presentation.ui.editProfile.ProfileFragment">
 
     <ProgressBar
         android:visibility="gone"
@@ -41,9 +41,10 @@
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialIconButtonStyle"
+            android:id="@+id/buttonSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="More"
+            android:contentDescription="Settings"
             app:icon="@drawable/settings"
             app:iconSize="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +61,7 @@
         android:layout_marginStart="24dp"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
         android:scaleType="centerCrop"
-        android:src="@drawable/profile"/>
+        android:src="@drawable/default_profile"/>
 
     <LinearLayout
         android:layout_width="0dp"
