@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.omarkarimli.newsapp.adapters.ArticleAdapter
 import com.omarkarimli.newsapp.databinding.FragmentBookmarkBinding
 import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
@@ -54,6 +55,12 @@ class BookmarkFragment : Fragment() {
 
         articleAdapter.onMoreClick = { context, anchoredView, article ->
             morePopupMenuHandler.showPopupMenu(context, anchoredView, article)
+        }
+        articleAdapter.onItemClick = { article ->
+            if (article.url != null) {
+                val action = BookmarkFragmentDirections.actionBookmarkFragmentToArticleFragment(article.url)
+                findNavController().navigate(action)
+            }
         }
 
         binding.rvArticles.adapter = articleAdapter

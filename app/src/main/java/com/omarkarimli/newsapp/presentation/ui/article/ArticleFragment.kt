@@ -1,4 +1,4 @@
-package com.omarkarimli.newsapp.presentation.ui.trending
+package com.omarkarimli.newsapp.presentation.ui.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,25 +8,27 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.omarkarimli.newsapp.adapters.TrendingAdapter
-import com.omarkarimli.newsapp.databinding.FragmentTrendingBinding
+import androidx.navigation.fragment.navArgs
+import com.omarkarimli.newsapp.databinding.FragmentArticleBinding
 import com.omarkarimli.newsapp.utils.Constants
 import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
+import com.omarkarimli.newsapp.utils.getTimeAgo
 import com.omarkarimli.newsapp.utils.goneItem
+import com.omarkarimli.newsapp.utils.loadFromUrlToImage
 import com.omarkarimli.newsapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TrendingFragment : Fragment() {
+class ArticleFragment : Fragment() {
+
+    private val args by navArgs<ArticleFragmentArgs>()
 
     @Inject
     lateinit var morePopupMenuHandler: MorePopupMenuHandler
 
-    private val trendingAdapter = TrendingAdapter()
-
-    private val viewModel by viewModels<TrendingViewModel>()
-    private var _binding: FragmentTrendingBinding? = null
+    private val viewModel by viewModels<ArticleViewModel>()
+    private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -34,7 +36,7 @@ class TrendingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTrendingBinding.inflate(inflater, container, false)
+        _binding = FragmentArticleBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,7 +48,7 @@ class TrendingFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.fetchArticles(Constants.EVERYTHING)
+        viewModel.fetchArticle(args.url, Constants.EVERYTHING)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,17 +58,11 @@ class TrendingFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        trendingAdapter.onMoreClick = { context, anchoredView, article ->
-            morePopupMenuHandler.showPopupMenu(context, anchoredView, article)
-        }
-        trendingAdapter.onItemClick = { article ->
-            if (article.url != null) {
-                val action = TrendingFragmentDirections.actionTrendingFragmentToArticleFragment(article.url)
-                findNavController().navigate(action)
+        binding.buttonMore.setOnClickListener {
+            if (viewModel.article.value != null) {
+                morePopupMenuHandler.showPopupMenu(it.context, it, viewModel.article.value!!)
             }
         }
-
-        binding.rvTrending.adapter = trendingAdapter
 
         observeData()
     }
@@ -84,8 +80,15 @@ class TrendingFragment : Fragment() {
             }
         }
 
-        viewModel.articles.observe(viewLifecycleOwner) { articles ->
-            trendingAdapter.updateList(articles.take(Constants.TRENDING_VALUE))
+        viewModel.article.observe(viewLifecycleOwner) { article ->
+            binding.apply {
+                imageViewArticle.loadFromUrlToImage(article.urlToImage!!)
+                textViewNewsTitle.text = article.title
+                textViewArticleDesc.text = article.description
+                textViewPublishedAt.text = getTimeAgo(article.publishedAt!!)
+                textViewSourceName.text = article.source?.name
+                textViewNewsAuthor.text = article.author
+            }
         }
     }
 }

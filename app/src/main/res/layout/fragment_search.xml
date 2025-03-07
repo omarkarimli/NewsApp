@@ -39,7 +39,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="12dp">
 
         <com.google.android.material.button.MaterialButton
@@ -102,8 +101,8 @@
         app:tabIndicatorColor="#1877F2"
         app:tabIndicatorFullWidth="false"
         app:tabMaxWidth="128dp"
-        app:tabSelectedTextColor="#000"
-        app:tabTextColor="@android:color/darker_gray"
+        app:tabSelectedTextColor="?colorOnBackground"
+        app:tabTextColor="?colorOutline"
         android:backgroundTint="@color/transparent">
 
         <com.google.android.material.tabs.TabItem

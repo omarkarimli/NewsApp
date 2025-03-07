@@ -64,6 +64,12 @@ class SearchFragment : Fragment() {
         articleAdapter.onMoreClick = { context, anchoredView, article ->
             morePopupMenuHandler.showPopupMenu(context, anchoredView, article)
         }
+        articleAdapter.onItemClick = { article ->
+            if (article.url != null) {
+                val action = SearchFragmentDirections.actionSearchFragmentToArticleFragment(article.url)
+                findNavController().navigate(action)
+            }
+        }
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -114,6 +120,8 @@ class SearchFragment : Fragment() {
                 // Reset categories
                 viewModel.filteredCategories.value = categoryList
             }
+
+            checkIfResultsAreEmpty()
         }
 
         observeData()
@@ -148,6 +156,17 @@ class SearchFragment : Fragment() {
         }
         viewModel.filteredCategories.observe(viewLifecycleOwner) { categories ->
             categoryAdapter.updateList(categories)
+        }
+    }
+
+    private fun checkIfResultsAreEmpty() {
+        val isArticlesEmpty = viewModel.filteredAuthors.value.isNullOrEmpty()
+        val isAuthorsEmpty = viewModel.filteredAuthors.value.isNullOrEmpty()
+        val isCategoriesEmpty = viewModel.filteredCategories.value.isNullOrEmpty()
+
+        val isResultEmpty = isArticlesEmpty && isAuthorsEmpty && isCategoriesEmpty
+        binding.empty.apply {
+            if (isResultEmpty) visibleItem() else goneItem()
         }
     }
 }

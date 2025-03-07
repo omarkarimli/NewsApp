@@ -15,6 +15,7 @@ import javax.inject.Inject
 class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
 
     lateinit var onMoreClick: (context: Context, anchoredView: View, article: Article) -> Unit
+    lateinit var onItemClick: (article: Article) -> Unit
 
     private var originalList = arrayListOf<Article>()
 
@@ -43,6 +44,7 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>
             textViewPublishedAt.text = getTimeAgo(instance.publishedAt!!)
 
             buttonMore.setOnClickListener { onMoreClick(it.context, it, instance) }
+            root.setOnClickListener { onItemClick(instance) }
         }
     }
 

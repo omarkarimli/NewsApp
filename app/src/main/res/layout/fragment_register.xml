@@ -23,9 +23,8 @@
         android:contentDescription="@string/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:iconSize="22dp"
         app:iconTint="?colorOnBackground"
-        app:icon="@drawable/baseline_arrow_back_24" />
+        app:icon="@drawable/back" />
 
     <ScrollView
         android:layout_width="match_parent"

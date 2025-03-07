@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.omarkarimli.newsapp.R
 import com.omarkarimli.newsapp.adapters.ArticleAdapter
 import com.omarkarimli.newsapp.adapters.CategoryAdapter
 import com.omarkarimli.newsapp.adapters.TrendingAdapter
@@ -24,6 +23,13 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
+    private val categoryListCopy = categoryList.toMutableList().apply {
+        add(
+            0,
+            CategoryModel(id = 0, image = null, name = "All", desc = null, isSelected = true)
+        )
+    }
 
     @Inject
     lateinit var morePopupMenuHandler: MorePopupMenuHandler
@@ -59,6 +65,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        categoryAdapter.updateList(categoryListCopy)
+
         binding.editTextSearch.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)
@@ -68,31 +76,30 @@ class HomeFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        val categoryListCopy = categoryList.toMutableList().apply {
-            add(
-                0,
-                CategoryModel(id = 0, image = null, name = "All", desc = null, isSelected = true)
-            )
-        }
-        categoryAdapter.updateList(categoryListCopy)
-
         trendingAdapter.onMoreClick = { context, anchoredView, article ->
             morePopupMenuHandler.showPopupMenu(context, anchoredView, article)
         }
         articleAdapter.onMoreClick = { context, anchoredView, article ->
             morePopupMenuHandler.showPopupMenu(context, anchoredView, article)
         }
+        articleAdapter.onItemClick = {
+            if (it.url != null) {
+                val action = HomeFragmentDirections.actionHomeFragmentToArticleFragment(it.url)
+                findNavController().navigate(action)
+            }
+        }
         categoryAdapter.onItemClick = { category ->
-            // Update Categories due to Divider visibility
-            categoryAdapter.updateList(categoryList.map {
-                it.copy(isSelected = it.name == category.name)
-            })
+            if (!category.isSelected) {
+                categoryAdapter.updateList(categoryListCopy.map {
+                    it.copy(isSelected = it.name == category.name)
+                })
 
-            // Update Articles
-            if (category.name == "All") {
-                viewModel.fetchArticles(Constants.EVERYTHING)
-            } else {
-                viewModel.fetchArticles(category.name!!)
+                // Update Articles
+                if (category.name == "All") {
+                    viewModel.fetchArticles(Constants.EVERYTHING)
+                } else {
+                    viewModel.fetchArticles(category.name!!)
+                }
             }
         }
 

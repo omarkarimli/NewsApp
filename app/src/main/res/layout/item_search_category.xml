@@ -21,10 +21,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/imageView_category"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonFollow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="12dp"
+        android:layout_marginHorizontal="16dp"
         android:orientation="vertical">
 
         <TextView
@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:ellipsize="end"
             style="@style/TextAppearance.Poppins.TitleMedium"
             android:text="General" />
 
@@ -39,8 +40,24 @@
             android:id="@+id/textView_category_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="2"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="Sports news and live sports coverage including scores" />
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:id="@+id/buttonFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="6dp"
+        app:icon="@drawable/add"
+        app:strokeColor="?colorPrimary"
+        android:textAppearance="@style/TextAppearance.Poppins.TitleSmall"
+        android:textColor="?colorPrimary"
+        android:text="Follow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

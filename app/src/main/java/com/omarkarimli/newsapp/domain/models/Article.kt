@@ -27,5 +27,7 @@ data class Article(
     @SerializedName("url")
     val url: String?,
     @SerializedName("urlToImage")
-    val urlToImage: String?
+    val urlToImage: String?,
+
+    val isLiked: Boolean = false
 )

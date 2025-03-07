@@ -16,6 +16,7 @@ import javax.inject.Inject
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     lateinit var onMoreClick: (context: Context, anchoredView: View, article: Article) -> Unit
+    lateinit var onItemClick: (article: Article) -> Unit
 
     private var originalList = arrayListOf<Article>()
 
@@ -44,6 +45,8 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
             textViewPublishedAt.text = getTimeAgo(instance.publishedAt!!)
 
             buttonMore.setOnClickListener { onMoreClick(it.context, it, instance) }
+
+            root.setOnClickListener { onItemClick(instance) }
         }
     }
 

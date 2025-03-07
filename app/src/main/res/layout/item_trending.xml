@@ -29,7 +29,7 @@
         android:layout_marginTop="12dp"
         android:maxLines="1"
         style="@style/TextAppearance.Poppins.BodySmall"
-        android:text="Europe" />
+        android:text="Source" />
 
     <TextView
         android:id="@+id/textView_newsTitle"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="More"
         app:iconTint="?colorOnBackground"
-        app:icon="@drawable/more" />
+        app:icon="@drawable/more_horizontal" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

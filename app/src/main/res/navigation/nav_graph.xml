@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -58,12 +61,20 @@
         android:id="@+id/exploreFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.explore.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_exploreFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.bookmark.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_bookmarkFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.profile.ProfileFragment"
@@ -85,12 +96,20 @@
         android:id="@+id/trendingFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.trending.TrendingFragment"
         android:label="fragment_trending"
-        tools:layout="@layout/fragment_trending" />
+        tools:layout="@layout/fragment_trending" >
+        <action
+            android:id="@+id/action_trendingFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.omarkarimli.newsapp.presentation.ui.editProfile.EditProfileFragment"
@@ -108,5 +127,14 @@
         <action
             android:id="@+id/action_settingsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.omarkarimli.newsapp.presentation.ui.article.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <argument
+            android:name="url"
+            app:argType="string" />
     </fragment>
 </navigation>

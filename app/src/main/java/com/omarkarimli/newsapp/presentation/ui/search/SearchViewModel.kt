@@ -22,7 +22,7 @@ class SearchViewModel @Inject constructor(
     val filteredCategories = MutableLiveData<List<CategoryModel>>()
     val filteredAuthors = MutableLiveData<List<SourceX>>()
 
-    val categories = MutableLiveData<List<CategoryModel>>()
+    private val categories = MutableLiveData<List<CategoryModel>>()
     val articles = MutableLiveData<List<Article>>()
     val authors = MutableLiveData<List<SourceX>>()
 

@@ -28,7 +28,7 @@
         android:layout_marginHorizontal="12dp"
         android:maxLines="1"
         style="@style/TextAppearance.Poppins.BodyMedium"
-        android:text="Europe" />
+        android:text="Source" />
 
     <TextView
         android:id="@+id/textView_newsTitle"
@@ -63,6 +63,9 @@
         app:layout_constraintEnd_toStartOf="@id/layout_time"
         android:layout_marginStart="4dp"
         style="@style/TextAppearance.Poppins.TitleSmall"
+        android:maxLines="1"
+        android:maxLength="8"
+        android:ellipsize="end"
         android:text="BBC News" />
 
     <LinearLayout
@@ -88,8 +91,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
-            android:ellipsize="end"
             style="@style/TextAppearance.Poppins.BodySmall"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="4h ago" />
     </LinearLayout>
 
@@ -103,6 +107,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="More"
         app:iconTint="?colorOnBackground"
-        app:icon="@drawable/more" />
+        app:icon="@drawable/more_horizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
