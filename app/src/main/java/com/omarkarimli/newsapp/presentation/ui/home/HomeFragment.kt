@@ -88,6 +88,12 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(action)
             }
         }
+        trendingAdapter.onItemClick = {
+            if (it.url != null) {
+                val action = HomeFragmentDirections.actionHomeFragmentToArticleFragment(it.url)
+                findNavController().navigate(action)
+            }
+        }
         categoryAdapter.onItemClick = { category ->
             if (!category.isSelected) {
                 categoryAdapter.updateList(categoryListCopy.map {

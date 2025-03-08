@@ -118,7 +118,7 @@ class RegisterFragment : Fragment() {
             }
         }
 
-        viewModel.succes.observe(viewLifecycleOwner) { successMessage ->
+        viewModel.success.observe(viewLifecycleOwner) { successMessage ->
             if (!successMessage.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), successMessage, Toast.LENGTH_SHORT).show()
             }

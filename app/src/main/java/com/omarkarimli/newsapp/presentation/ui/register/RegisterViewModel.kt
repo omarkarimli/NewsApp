@@ -17,7 +17,7 @@ class RegisterViewModel @Inject constructor(
     val isNavigating = MutableLiveData(false)
     val loading = MutableLiveData(false)
     val error = MutableLiveData<String>()
-    val succes = MutableLiveData<String>()
+    val success = MutableLiveData<String>()
 
     fun registerNewUser(email: String, password: String, name: String, surname: String, bio: String, website: String) {
         loading.postValue(true)
@@ -31,7 +31,7 @@ class RegisterViewModel @Inject constructor(
                 authRepository.addUserToFirestore(userData)
 
                 isNavigating.postValue(true)
-                succes.postValue("Registered successfully")
+                success.postValue("Registered successfully")
             } catch (e: Exception) {
                 error.postValue("Error: ${e.localizedMessage}")
             } finally {
