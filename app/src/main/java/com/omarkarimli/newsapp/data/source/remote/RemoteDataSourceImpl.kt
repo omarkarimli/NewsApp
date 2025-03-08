@@ -83,9 +83,10 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun fetchUserData(): UserData? {
+        val uid = provideAuth.currentUser?.uid ?: "error"
         val snapshot = provideFirestore
             .collection(Constants.USERS)
-            .document(provideAuth.currentUser?.uid ?: return null)
+            .document(uid)
             .get()
             .await()
 
@@ -105,10 +106,10 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun addUserToFirestore(userData: UserData) {
         val uid = provideAuth.currentUser?.uid ?: "error"
         val userMap = mapOf(
-            "name" to userData.name,
-            "surname" to userData.surname,
-            "bio" to userData.bio,
-            "website" to userData.website
+            Constants.NAME to userData.name,
+            Constants.SURNAME to userData.surname,
+            Constants.BIO to userData.bio,
+            Constants.WEBSITE to userData.website
         )
         provideFirestore
             .collection(Constants.USERS)
@@ -120,10 +121,10 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun updateUserInFirestore(userData: UserData) {
         val uid = provideAuth.currentUser?.uid ?: "error"
         val userMap = mapOf(
-            "name" to userData.name,
-            "surname" to userData.surname,
-            "bio" to userData.bio,
-            "website" to userData.website
+            Constants.NAME to userData.name,
+            Constants.SURNAME to userData.surname,
+            Constants.BIO to userData.bio,
+            Constants.WEBSITE to userData.website
         )
         provideFirestore
             .collection(Constants.USERS)
