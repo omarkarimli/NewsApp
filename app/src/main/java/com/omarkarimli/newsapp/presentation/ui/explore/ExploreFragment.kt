@@ -12,7 +12,7 @@ import com.omarkarimli.newsapp.adapters.ArticleAdapter
 import com.omarkarimli.newsapp.adapters.SearchCategoryAdapter
 import com.omarkarimli.newsapp.databinding.FragmentExploreBinding
 import com.omarkarimli.newsapp.utils.Constants
-import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
+import com.omarkarimli.newsapp.menu.MorePopupMenuHandler
 import com.omarkarimli.newsapp.utils.goneItem
 import com.omarkarimli.newsapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint

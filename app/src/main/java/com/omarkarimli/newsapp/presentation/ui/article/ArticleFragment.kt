@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.omarkarimli.newsapp.databinding.FragmentArticleBinding
 import com.omarkarimli.newsapp.utils.Constants
-import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
+import com.omarkarimli.newsapp.menu.MorePopupMenuHandler
 import com.omarkarimli.newsapp.utils.getTimeAgo
 import com.omarkarimli.newsapp.utils.goneItem
 import com.omarkarimli.newsapp.utils.loadFromUrlToImage

@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemArticleBinding
 import com.omarkarimli.newsapp.domain.models.Article
-import com.omarkarimli.newsapp.domain.models.CategoryModel
-import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
 import com.omarkarimli.newsapp.utils.getTimeAgo
 import com.omarkarimli.newsapp.utils.loadFromUrlToImage
-import javax.inject.Inject
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 

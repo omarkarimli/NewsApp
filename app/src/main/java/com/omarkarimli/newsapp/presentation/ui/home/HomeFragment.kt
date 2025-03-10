@@ -14,8 +14,8 @@ import com.omarkarimli.newsapp.adapters.TrendingAdapter
 import com.omarkarimli.newsapp.databinding.FragmentHomeBinding
 import com.omarkarimli.newsapp.domain.models.CategoryModel
 import com.omarkarimli.newsapp.utils.Constants
-import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
-import com.omarkarimli.newsapp.utils.categoryList
+import com.omarkarimli.newsapp.menu.MorePopupMenuHandler
+import com.omarkarimli.newsapp.data.source.local.categoryList
 import com.omarkarimli.newsapp.utils.goneItem
 import com.omarkarimli.newsapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     private val categoryListCopy = categoryList.toMutableList().apply {
         add(
             0,
-            CategoryModel(id = 0, image = null, name = "All", desc = null, isSelected = true)
+            CategoryModel(id = 0, image = null, name = Constants.ALL, desc = null, isSelected = true)
         )
     }
 
@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
                 })
 
                 // Update Articles
-                if (category.name == "All") {
+                if (category.name == Constants.ALL) {
                     viewModel.fetchArticles(Constants.EVERYTHING)
                 } else {
                     viewModel.fetchArticles(category.name!!)

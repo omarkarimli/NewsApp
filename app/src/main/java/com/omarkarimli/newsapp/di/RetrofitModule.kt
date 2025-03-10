@@ -1,6 +1,6 @@
 package com.omarkarimli.newsapp.di
 
-import com.omarkarimli.newsapp.NewsApiService
+import com.omarkarimli.newsapp.data.api.NewsApiService
 import com.omarkarimli.newsapp.utils.Constants
 import dagger.Module
 import dagger.Provides

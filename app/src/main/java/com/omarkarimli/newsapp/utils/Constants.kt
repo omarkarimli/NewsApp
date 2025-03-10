@@ -18,5 +18,6 @@ object Constants {
     const val WEBSITE = "website"
 
     const val EVERYTHING = "everything"
+    const val ALL = "All"
     const val TRENDING_VALUE = 5
 }

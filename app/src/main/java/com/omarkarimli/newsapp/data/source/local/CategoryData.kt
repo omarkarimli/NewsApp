@@ -1,4 +1,4 @@
-package com.omarkarimli.newsapp.utils
+package com.omarkarimli.newsapp.data.source.local
 
 import com.omarkarimli.newsapp.R
 import com.omarkarimli.newsapp.domain.models.CategoryModel

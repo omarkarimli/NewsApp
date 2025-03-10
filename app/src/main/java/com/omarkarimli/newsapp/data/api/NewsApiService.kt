@@ -1,4 +1,4 @@
-package com.omarkarimli.newsapp
+package com.omarkarimli.newsapp.data.api
 
 import com.omarkarimli.newsapp.domain.models.NewsResponse
 import com.omarkarimli.newsapp.domain.models.SourceResponse

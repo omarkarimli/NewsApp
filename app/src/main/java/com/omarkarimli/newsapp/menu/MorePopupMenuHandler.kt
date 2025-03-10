@@ -1,4 +1,4 @@
-package com.omarkarimli.newsapp.utils
+package com.omarkarimli.newsapp.menu
 
 import android.content.Context
 import android.content.Intent

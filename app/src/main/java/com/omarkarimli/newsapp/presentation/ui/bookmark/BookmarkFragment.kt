@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.omarkarimli.newsapp.adapters.ArticleAdapter
 import com.omarkarimli.newsapp.databinding.FragmentBookmarkBinding
-import com.omarkarimli.newsapp.utils.MorePopupMenuHandler
+import com.omarkarimli.newsapp.menu.MorePopupMenuHandler
 import com.omarkarimli.newsapp.utils.goneItem
 import com.omarkarimli.newsapp.utils.visibleItem
 import dagger.hilt.android.AndroidEntryPoint

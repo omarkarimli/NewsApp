@@ -8,8 +8,7 @@ import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.models.CategoryModel
 import com.omarkarimli.newsapp.domain.models.SourceX
 import com.omarkarimli.newsapp.domain.repository.NewsRepository
-import com.omarkarimli.newsapp.utils.Constants
-import com.omarkarimli.newsapp.utils.categoryList
+import com.omarkarimli.newsapp.data.source.local.categoryList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
