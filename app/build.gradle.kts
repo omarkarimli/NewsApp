@@ -107,6 +107,9 @@ dependencies {
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+
+    // Lottie
+    implementation("com.airbnb.android:lottie:6.0.0")
 }
 
 // Allow references to generated code
