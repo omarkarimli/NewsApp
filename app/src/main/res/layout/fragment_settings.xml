@@ -7,17 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.settings.SettingsFragment">
 
-    <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="gone"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
 
     <!-- Top App Bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
