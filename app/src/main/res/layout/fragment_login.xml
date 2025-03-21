@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Again!"
             android:fontFamily="@font/poppins_semibold"
-            android:textColor="#1877F2"
+            android:textColor="?colorPrimary"
             android:textFontWeight="700"
             android:textSize="48sp" />
 
@@ -176,7 +176,7 @@
                 android:text="Sign Up"
                 android:layout_marginVertical="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="#5890FF"
+                android:textColor="?colorPrimary"
                 android:textSize="14sp" />
         </LinearLayout>
 
