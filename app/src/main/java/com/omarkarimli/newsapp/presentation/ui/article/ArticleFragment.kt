@@ -85,7 +85,7 @@ class ArticleFragment : Fragment() {
                 imageViewArticle.loadFromUrlToImage(article.urlToImage!!)
                 textViewNewsTitle.text = article.title
                 textViewArticleDesc.text = article.description
-                textViewPublishedAt.text = getTimeAgo(article.publishedAt!!)
+                textViewPublishedAt.text = article.publishedAt?.getTimeAgo()
                 textViewSourceName.text = article.source?.name
                 textViewNewsAuthor.text = article.author
             }

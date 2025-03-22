@@ -39,7 +39,7 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>
             textViewSourceName.text = instance.source?.name
             textViewNewsTitle.text = instance.title
             textViewNewsAuthor.text = instance.author
-            textViewPublishedAt.text = getTimeAgo(instance.publishedAt!!)
+            textViewPublishedAt.text = instance.publishedAt?.getTimeAgo()
 
             buttonMore.setOnClickListener { onMoreClick(it.context, it, instance) }
             root.setOnClickListener { onItemClick(instance) }
