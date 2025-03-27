@@ -37,8 +37,10 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
             textViewCategory.text = instance.name
 
             if (instance.isSelected) {
+                root.isEnabled = false
                 divider.visibleItem()
             } else {
+                root.isEnabled = true
                 divider.goneItem()
             }
 
