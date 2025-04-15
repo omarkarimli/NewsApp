@@ -1,7 +1,6 @@
 package com.omarkarimli.newsapp.utils
 
 object Constants {
-    const val API_KEY = "56ec2880d03a4ac1b3e03942a2aa6f07"
     const val BASE_URL = "https://newsapi.org/v2/"
 
     const val ARTICLE_DB = "articleDB"

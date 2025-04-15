@@ -5,6 +5,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.omarkarimli.newsapp.BuildConfig
 import com.omarkarimli.newsapp.data.api.NewsApiService
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.models.SourceX
@@ -21,11 +22,12 @@ class RemoteDataSourceImpl @Inject constructor(
     private val provideAuth: FirebaseAuth,
     private val provideFirestore: FirebaseFirestore,
 ) : RemoteDataSource {
+    val apiKey = BuildConfig.API_KEY
 
     override suspend fun fetchAllSources(): List<SourceX> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.getSources(Constants.API_KEY).awaitResponse()
+                val response = apiService.getSources(apiKey).awaitResponse()
                 response.body()?.sources ?: emptyList()
             } catch (e: Exception) {
                 emptyList()
@@ -47,7 +49,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun fetchAllArticles(query: String): List<Article> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.getNews(query, Constants.API_KEY).awaitResponse()
+                val response = apiService.getNews(query, apiKey).awaitResponse()
                 response.body()?.articles?.filterNotNull() ?: emptyList()
             } catch (e: Exception) {
                 emptyList()
@@ -58,7 +60,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun fetchArticlesByCategory(category: String): List<Article> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.getNewsByCategory(category, Constants.API_KEY)
+                val response = apiService.getNewsByCategory(category, apiKey)
                 response.articles?.filterNotNull() ?: emptyList()
             } catch (e: Exception) {
                 emptyList()

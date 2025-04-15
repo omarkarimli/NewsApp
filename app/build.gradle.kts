@@ -23,6 +23,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"${getApiKey()}\"")
     }
 
     buildTypes {
@@ -45,6 +47,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -115,4 +118,14 @@ dependencies {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+
+fun getApiKey(): String {
+    return project.rootProject.file("local.properties")
+        .readLines()
+        .find { it.startsWith("API_KEY") }
+        ?.split("=")
+        ?.get(1)
+        ?.trim()
+        ?: "\"\""
 }

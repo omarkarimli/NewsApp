@@ -17,6 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="28dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
