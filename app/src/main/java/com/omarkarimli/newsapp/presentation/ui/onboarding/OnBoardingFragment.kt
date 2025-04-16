@@ -40,19 +40,19 @@ class OnBoardingFragment : Fragment() {
         val onBoardingList = listOf(
             OnBoardingModel(
                 R.drawable.onboarding1,
-                "Lorem Ipsum is simply\ndummy",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                "Stay Informed, Stay Ahead",
+                "Get the latest breaking news and in-depth articles from trusted sources around the world."
             ),
             OnBoardingModel(
                 R.drawable.onboarding2,
-                "Lorem Ipsum is simply\ndummy",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                "Personalized For You",
+                "Choose your interests and get tailored news updates that matter to you the most."
             ),
             OnBoardingModel(
                 R.drawable.onboarding3,
-                "Lorem Ipsum is simply\ndummy",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            ),
+                "Anytime, Anywhere",
+                "Read news on the go with our smooth and user-friendly interface, anytime you want."
+            )
         )
 
         adapter.updateList(onBoardingList)

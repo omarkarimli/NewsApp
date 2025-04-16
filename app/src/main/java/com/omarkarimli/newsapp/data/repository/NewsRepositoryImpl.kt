@@ -12,10 +12,6 @@ class NewsRepositoryImpl @Inject constructor(
 ) : NewsRepository {
 
     // Remote
-    override suspend fun changePassword(email: String, currentPassword: String, newPassword: String) = remoteDataSource.changePassword(email, currentPassword, newPassword)
-
-    override suspend fun fetchUserData() = remoteDataSource.fetchUserData()
-
     override suspend fun fetchAllArticles(query: String) = remoteDataSource.fetchAllArticles(query)
 
     override suspend fun getArticleByUrl(url: String, query: String) = remoteDataSource.getArticleByUrl(url, query)

@@ -1,10 +1,9 @@
 package com.omarkarimli.newsapp.presentation.ui.home
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.MutableLiveData
-import com.omarkarimli.newsapp.data.source.remote.RemoteDataSourceImpl
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.repository.NewsRepository
 import com.omarkarimli.newsapp.utils.Constants
@@ -27,16 +26,15 @@ class HomeViewModel @Inject constructor(
     }
 
     fun fetchArticles(query: String) {
+        loading.value = true
         viewModelScope.launch {
-            loading.value = true
             try {
                 val response = repo.fetchAllArticles(query)
                 articles.postValue(response)
+                loading.value = false
             } catch (e: Exception) {
                 Log.e("HomeViewModel", "Error: ${e.message}")
                 error.postValue("Failed to load articles")
-            } finally {
-                loading.value = false
             }
         }
     }

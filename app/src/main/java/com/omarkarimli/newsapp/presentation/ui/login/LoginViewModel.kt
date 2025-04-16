@@ -10,6 +10,7 @@ import com.omarkarimli.newsapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import androidx.core.content.edit
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -30,11 +31,11 @@ class LoginViewModel @Inject constructor(
 
                 if (result.user != null) {
                     // Save user preferences
-                    sharedPreferences.edit()
-                        .putBoolean(Constants.IS_LOGGED_KEY, isChecked)
-                        .putBoolean(Constants.IS_NOTI, true)
-                        .putBoolean(Constants.DARK_MODE, false)
-                        .apply()
+                    sharedPreferences.edit {
+                        putBoolean(Constants.IS_LOGGED_KEY, isChecked)
+                            .putBoolean(Constants.IS_NOTI, true)
+                            .putBoolean(Constants.DARK_MODE, false)
+                    }
 
                     isNavigating.postValue(true)
                 } else {

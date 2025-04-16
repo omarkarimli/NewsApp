@@ -1,11 +1,11 @@
 package com.omarkarimli.newsapp.presentation.ui.settings
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
-import com.omarkarimli.newsapp.domain.repository.NewsRepository
+import com.omarkarimli.newsapp.domain.repository.AuthRepository
 import com.omarkarimli.newsapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,9 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val repo: NewsRepository,
-    private val sharedPreferences: SharedPreferences,
-    private val provideAuth: FirebaseAuth
+    private val authRepository: AuthRepository,
+    private val sharedPreferences: SharedPreferences
 ): ViewModel() {
 
     val isDarkMode: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -31,15 +30,17 @@ class SettingsViewModel @Inject constructor(
         isDarkMode.value = isChecked
 
         sharedPreferences
-            .edit()
-            .putBoolean(Constants.DARK_MODE, isChecked)
-            .apply()
+            .edit {
+                putBoolean(Constants.DARK_MODE, isChecked)
+            }
     }
 
     fun signOutAndRedirect() {
-        sharedPreferences.edit().clear().apply()
+        sharedPreferences.edit { clear() }
 
-        provideAuth.signOut()
+        viewModelScope.launch {
+            authRepository.signOut()
+        }
         error.value = "Signing out..."
         isNavigating.value = true
     }

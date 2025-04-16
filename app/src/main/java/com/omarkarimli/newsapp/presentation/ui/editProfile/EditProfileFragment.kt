@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EditProfileFragment : Fragment() {
 
-    val args: EditProfileFragmentArgs by navArgs()
+    private val args: EditProfileFragmentArgs by navArgs()
 
     private val viewModel by viewModels<EditProfileViewModel>()
     private var _binding: FragmentEditProfileBinding? = null

@@ -23,16 +23,15 @@ class ArticleViewModel @Inject constructor(
     val error = MutableLiveData<String>()
 
     fun fetchArticle(url: String, query: String) {
+        loading.value = true
         viewModelScope.launch {
-            loading.value = true
             try {
                 val response = repo.getArticleByUrl(url, query)
                 article.postValue(response)
+                loading.value = false
             } catch (e: Exception) {
                 Log.e("ArticleViewModel", "Error: ${e.message}")
                 error.postValue("Failed to load article")
-            } finally {
-                loading.value = false
             }
         }
     }

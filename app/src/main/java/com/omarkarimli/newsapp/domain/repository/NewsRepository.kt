@@ -8,10 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface NewsRepository {
 
     // Remote
-    suspend fun changePassword(email: String, currentPassword: String, newPassword: String)
-
-    suspend fun fetchUserData(): UserData?
-
     suspend fun getArticleByUrl(url: String, query: String): Article
 
     suspend fun fetchAllArticles(query: String): List<Article>

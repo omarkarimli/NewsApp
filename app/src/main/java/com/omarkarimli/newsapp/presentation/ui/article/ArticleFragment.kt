@@ -77,6 +77,8 @@ class ArticleFragment : Fragment() {
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
             if (!errorMessage.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+
+                findNavController().navigateUp()
             }
         }
 
