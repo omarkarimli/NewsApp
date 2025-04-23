@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingVertical="40dp"
+        android:paddingVertical="16dp"
         android:paddingHorizontal="24dp">
 
         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator

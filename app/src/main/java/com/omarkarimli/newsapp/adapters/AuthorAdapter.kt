@@ -2,11 +2,13 @@ package com.omarkarimli.newsapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemAuthorBinding
 import com.omarkarimli.newsapp.domain.models.SourceX
+import com.omarkarimli.newsapp.utils.diffUtils.AuthorDiffCallback
 
-class AuthorAdapter : RecyclerView.Adapter<AuthorAdapter.AuthorViewHolder>() {
+class AuthorAdapter : ListAdapter<SourceX, AuthorAdapter.AuthorViewHolder>(AuthorDiffCallback()){
 
     private var originalList = arrayListOf<SourceX>()
 
@@ -36,6 +38,6 @@ class AuthorAdapter : RecyclerView.Adapter<AuthorAdapter.AuthorViewHolder>() {
     fun updateList(newList: List<SourceX>) {
         originalList.clear()
         originalList.addAll(newList)
-        notifyDataSetChanged()
+        submitList(newList)
     }
 }

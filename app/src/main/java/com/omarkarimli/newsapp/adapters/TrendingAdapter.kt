@@ -4,13 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemTrendingBinding
 import com.omarkarimli.newsapp.domain.models.Article
+import com.omarkarimli.newsapp.utils.diffUtils.ArticleDiffCallback
 import com.omarkarimli.newsapp.utils.getTimeAgo
 import com.omarkarimli.newsapp.utils.loadFromUrlToImage
 
-class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
+class TrendingAdapter : ListAdapter<Article, TrendingAdapter.TrendingViewHolder>(ArticleDiffCallback()) {
 
     lateinit var onMoreClick: (context: Context, anchoredView: View, article: Article) -> Unit
     lateinit var onItemClick: (article: Article) -> Unit
@@ -49,6 +51,6 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>
     fun updateList(newList: List<Article>) {
         originalList.clear()
         originalList.addAll(newList)
-        notifyDataSetChanged()
+        submitList(newList)
     }
 }

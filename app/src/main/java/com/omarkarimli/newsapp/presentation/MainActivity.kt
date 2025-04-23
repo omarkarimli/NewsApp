@@ -3,11 +3,8 @@ package com.omarkarimli.newsapp.presentation
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.omarkarimli.newsapp.R
@@ -27,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         setTheme()
 
@@ -49,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         R.id.searchFragment,
         R.id.settingsFragment,
         R.id.editProfileFragment,
-        R.id.articleFragment
+        R.id.articleFragment,
+        R.id.trendingFragment
     )
 
     private fun setBottomNavigation() {

@@ -2,11 +2,13 @@ package com.omarkarimli.newsapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemOnboardingBinding
 import com.omarkarimli.newsapp.domain.models.OnBoardingModel
+import com.omarkarimli.newsapp.utils.diffUtils.OnBoardingDiffCallback
 
-class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+class OnBoardingAdapter : ListAdapter<OnBoardingModel, OnBoardingAdapter.OnBoardingViewHolder>(OnBoardingDiffCallback()) {
 
     private var originalList = arrayListOf<OnBoardingModel>()
 
@@ -37,6 +39,6 @@ class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewH
     fun updateList(newList: List<OnBoardingModel>) {
         originalList.clear()
         originalList.addAll(newList)
-        notifyDataSetChanged()
+        submitList(newList)
     }
 }

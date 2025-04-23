@@ -4,52 +4,43 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemArticleBinding
 import com.omarkarimli.newsapp.domain.models.Article
+import com.omarkarimli.newsapp.utils.diffUtils.ArticleDiffCallback
 import com.omarkarimli.newsapp.utils.getTimeAgo
 import com.omarkarimli.newsapp.utils.loadFromUrlToImage
 
-class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback()) {
 
-    lateinit var onMoreClick: (context: Context, anchoredView: View, article: Article) -> Unit
-    lateinit var onItemClick: (article: Article) -> Unit
-
-    private var originalList = arrayListOf<Article>()
+    lateinit var onMoreClick: (Context, View, Article) -> Unit
+    lateinit var onItemClick: (Article) -> Unit
 
     inner class ArticleViewHolder(val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val layout = ItemArticleBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ArticleViewHolder(
+            ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
-        return ArticleViewHolder(layout)
-    }
-
-    override fun getItemCount(): Int {
-        return originalList.size
-    }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val instance = originalList[position]
+        val article = getItem(position)
 
         holder.binding.apply {
-            imageViewArticle.loadFromUrlToImage(instance.urlToImage)
-            textViewSourceName.text = instance.source?.name
-            textViewNewsTitle.text = instance.title
-            textViewNewsAuthor.text = instance.author
-            textViewPublishedAt.text = instance.publishedAt?.getTimeAgo()
+            imageViewArticle.loadFromUrlToImage(article.urlToImage)
+            textViewSourceName.text = article.source?.name
+            textViewNewsTitle.text = article.title
+            textViewNewsAuthor.text = article.author
+            textViewPublishedAt.text = article.publishedAt?.getTimeAgo()
 
-            buttonMore.setOnClickListener { onMoreClick(it.context, it, instance) }
-
-            root.setOnClickListener { onItemClick(instance) }
+            buttonMore.setOnClickListener { onMoreClick(it.context, it, article) }
+            root.setOnClickListener   { onItemClick(article) }
         }
     }
 
     fun updateList(newList: List<Article>) {
-        originalList.clear()
-        originalList.addAll(newList)
-        notifyDataSetChanged()
+        submitList(newList.toList())
     }
 }

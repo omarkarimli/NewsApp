@@ -3,7 +3,6 @@ package com.omarkarimli.newsapp.utils
 import android.text.format.DateUtils
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import com.omarkarimli.newsapp.R
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat

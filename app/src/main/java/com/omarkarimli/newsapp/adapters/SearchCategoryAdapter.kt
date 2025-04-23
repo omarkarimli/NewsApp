@@ -2,11 +2,13 @@ package com.omarkarimli.newsapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.omarkarimli.newsapp.databinding.ItemSearchCategoryBinding
 import com.omarkarimli.newsapp.domain.models.CategoryModel
+import com.omarkarimli.newsapp.utils.diffUtils.CategoryDiffCallback
 
-class SearchCategoryAdapter : RecyclerView.Adapter<SearchCategoryAdapter.SearchCategoryViewHolder>() {
+class SearchCategoryAdapter : ListAdapter<CategoryModel, SearchCategoryAdapter.SearchCategoryViewHolder>(CategoryDiffCallback()) {
 
     lateinit var onItemClick: (CategoryModel) -> Unit
 
@@ -46,6 +48,6 @@ class SearchCategoryAdapter : RecyclerView.Adapter<SearchCategoryAdapter.SearchC
     fun updateList(newList: List<CategoryModel>) {
         originalList.clear()
         originalList.addAll(newList)
-        notifyDataSetChanged()
+        submitList(newList)
     }
 }
