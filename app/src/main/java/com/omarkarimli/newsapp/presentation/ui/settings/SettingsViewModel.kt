@@ -22,7 +22,11 @@ class SettingsViewModel @Inject constructor(
     val loading: MutableLiveData<Boolean> = MutableLiveData()
     val error: MutableLiveData<String> = MutableLiveData()
 
-    fun initializeDarkModeState() {
+    init {
+        initializeDarkModeState()
+    }
+
+    private fun initializeDarkModeState() {
         isDarkMode.value = sharedPreferences.getBoolean(Constants.DARK_MODE, false)
     }
 
@@ -36,12 +40,18 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun signOutAndRedirect() {
-        sharedPreferences.edit { clear() }
-
         viewModelScope.launch {
-            authRepository.signOut()
+            loading.value = true
+            try {
+                authRepository.signOut()
+                sharedPreferences.edit { clear() }
+                error.value = "Signing out..."
+                isNavigating.value = true
+            } catch (e: Exception) {
+                error.value = "Failed to sign out: ${e.localizedMessage}"
+            } finally {
+                loading.value = false
+            }
         }
-        error.value = "Signing out..."
-        isNavigating.value = true
     }
 }

@@ -1,10 +1,9 @@
 package com.omarkarimli.newsapp.presentation.ui.trending
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.MutableLiveData
-import com.omarkarimli.newsapp.data.source.remote.RemoteDataSourceImpl
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.repository.NewsRepository
 import com.omarkarimli.newsapp.utils.Constants

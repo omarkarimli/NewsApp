@@ -32,7 +32,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -41,12 +41,6 @@ class SettingsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.initializeDarkModeState()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
