@@ -7,7 +7,7 @@ interface LocalDataSource {
 
     suspend fun getAllArticlesLocally(): Flow<List<Article>>
 
-    suspend fun deleteArticleLocally(article: Article)
+    suspend fun deleteArticleByTitleLocally(title: String)
 
     suspend fun getArticleByUrlLocally(url: String): Article?
 

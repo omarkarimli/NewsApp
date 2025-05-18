@@ -23,7 +23,7 @@ class NewsRepositoryImpl @Inject constructor(
     // Local
     override suspend fun getAllArticlesLocally() = localDataSource.getAllArticlesLocally()
 
-    override suspend fun deleteArticleLocally(article: Article) = localDataSource.deleteArticleLocally(article)
+    override suspend fun deleteArticleByTitleLocally(title: String) = localDataSource.deleteArticleByTitleLocally(title)
 
     override suspend fun getArticleByUrlLocally(url: String) = localDataSource.getArticleByUrlLocally(url)
 

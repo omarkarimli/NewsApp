@@ -10,7 +10,7 @@ class LocalDataSourceImpl @Inject constructor(
 
     override suspend fun getAllArticlesLocally() = articleDao.getAll()
 
-    override suspend fun deleteArticleLocally(article: Article) = articleDao.delete(article)
+    override suspend fun deleteArticleByTitleLocally(title: String) = articleDao.deleteById(title)
 
     override suspend fun getArticleByUrlLocally(url: String) = articleDao.getArticleByUrl(url)
 

@@ -1,14 +1,14 @@
 package com.omarkarimli.newsapp.presentation.ui.home
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.repository.NewsRepository
-import com.omarkarimli.newsapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,25 +16,31 @@ class HomeViewModel @Inject constructor(
     private val repo: NewsRepository
 ) : ViewModel() {
 
-    val articles = MutableLiveData<List<Article>>()
+    private val _articles = MutableStateFlow<List<Article>>(emptyList())
+    val articles: StateFlow<List<Article>> = _articles.asStateFlow()
 
-    val loading = MutableLiveData(false)
-    val error = MutableLiveData<String>()
+    private val _loading = MutableStateFlow(false)
+    val loading: StateFlow<Boolean> = _loading.asStateFlow()
 
-    init {
-        fetchArticles(Constants.EVERYTHING)
-    }
+    private val _error = MutableSharedFlow<String>() // SharedFlow for one-time events
+    val error: SharedFlow<String> = _error.asSharedFlow()
 
     fun fetchArticles(query: String) {
-        loading.value = true
         viewModelScope.launch {
+            _loading.value = true
             try {
-                val response = repo.fetchAllArticles(query)
-                articles.postValue(response)
-                loading.value = false
+                val response = withContext(Dispatchers.IO) {
+                    repo.fetchAllArticles(query)
+                }
+                _articles.value = response
+
+                if (_articles.value.isEmpty()) {
+                    _error.emit("No articles found")
+                } else {
+                    _loading.value = false
+                }
             } catch (e: Exception) {
-                Log.e("HomeViewModel", "Error: ${e.message}")
-                error.postValue("Failed to load articles")
+                _error.emit("Failed to load articles: ${e.localizedMessage}")
             }
         }
     }

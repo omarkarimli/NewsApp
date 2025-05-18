@@ -1,6 +1,6 @@
 package com.omarkarimli.newsapp.di
 
-import com.omarkarimli.newsapp.data.source.local.LocalDataSourceImpl
+import com.omarkarimli.newsapp.domain.repository.NewsRepository
 import com.omarkarimli.newsapp.menu.MorePopupMenuHandler
 import dagger.Module
 import dagger.Provides
@@ -14,5 +14,5 @@ object PopupMenuHandlerModule {
 
     @Singleton
     @Provides
-    fun provideMorePopupMenuHandler(localDataSource: LocalDataSourceImpl) = MorePopupMenuHandler(localDataSource)
+    fun provideMorePopupMenuHandler(repo: NewsRepository) = MorePopupMenuHandler(repo)
 }

@@ -2,7 +2,6 @@ package com.omarkarimli.newsapp.domain.repository
 
 import com.omarkarimli.newsapp.domain.models.Article
 import com.omarkarimli.newsapp.domain.models.SourceX
-import com.omarkarimli.newsapp.domain.models.UserData
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
@@ -19,7 +18,7 @@ interface NewsRepository {
     // Local
     suspend fun getAllArticlesLocally(): Flow<List<Article>>
 
-    suspend fun deleteArticleLocally(article: Article)
+    suspend fun deleteArticleByTitleLocally(title: String)
 
     suspend fun getArticleByUrlLocally(url: String): Article?
 
